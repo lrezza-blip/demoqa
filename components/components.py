@@ -18,3 +18,19 @@ class WebElement:
         except NoSuchElementException:
             return False
         return True
+
+ # home task
+class Comp:
+    def __init__(self, driver, locator=''):
+        self.driver = driver
+        self.locator = locator
+
+    def find_element(self):
+        return self.driver.find_element(By.CSS_SELECTOR, self.locator)
+
+    def get_text(self):
+        try:
+            return str(self.find_element().text)
+        except NoSuchElementException:
+            return False
+        return True
