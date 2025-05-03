@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from pages.elements_page import ElementsPage
 
 def test_footer_text():
     driver = webdriver.Chrome()
@@ -38,3 +39,12 @@ def test_elements_page_text():
     finally:
         driver.quit()
 
+
+
+def test_page_elements(browser):
+    el_page = ElementsPage(browser)
+    el_page.visit()
+
+    assert el_page.icon.exist()
+    assert el_page.btn_sidebar_first.exist()
+    assert el_page.btn_sidebar_first_textbox.exist()

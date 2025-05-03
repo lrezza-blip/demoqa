@@ -19,6 +19,9 @@ class WebElement:
             return False
         return True
 
+    def visible(self):
+        return self.find_element().is_displayed()
+
  # home task
 class Comp:
     def __init__(self, driver, locator=''):
@@ -34,3 +37,4 @@ class Comp:
         except NoSuchElementException:
             return False
         return True
+
