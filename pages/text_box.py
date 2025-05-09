@@ -8,3 +8,6 @@ class TextBox(BasePage):
       super().__init__(driver,self.base_url)
 
       self.name = WebElement(driver, '#userName')
+
+    def scroll_to_element(self, element):
+        self.driver.execute_script('arguments[0].scrollIntoView();', element)
