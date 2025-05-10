@@ -20,6 +20,7 @@ class WebElement:
     def find_elements(self):
         return self.driver.find_elements(self.get_by_type(), self.locator)
 
+
     def exist(self):
         try:
             self.find_element()
@@ -66,7 +67,7 @@ class WebElement:
         if self.locator_type == 'xpath':
             return By.XPATH
         if self.locator_type == 'css':
-            return By.CSS
+            return By.CSS_SELECTOR
         if self.locator_type == 'class':
             return By.CLASS_NAME
         if self.locator_type == 'link':
@@ -81,6 +82,8 @@ class WebElement:
             self.find_element()
         )
 
+    def check_css(self, style, value=''):
+        return self.find_element().value_of_css_property(style) == value
     # home task
 class Comp:
     def __init__(self, driver, locator=''):
