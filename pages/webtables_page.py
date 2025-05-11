@@ -16,6 +16,7 @@ class WebTables:
     Rows = (By.CLASS_NAME, "rt-tr-group")
     Delete = (By.CSS_SELECTOR, ".action-buttons span[title='Delete']")
     Error = (By.CSS_SELECTOR, "input:invalid")
+    Column_Headers = (By.CSS_SELECTOR, 'div.rt-th')
 
     Fields = {
         "firstName": (By.ID, "firstName"),
@@ -84,3 +85,13 @@ class WebTables:
                 break
         else:
             raise ValueError
+
+    def get_column_headers(self):
+        headers = self.browser.find_elements(*self.Column_Headers)
+        return headers
+
+    def wait_and_click_header(self, header):
+        header.click()
+
+    def get_header_class(self, header):
+        return header.get_attribute("class")
